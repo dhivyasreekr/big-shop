@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function about(Request $request)
+    public function index(Request $request)
     {
-        return view('frontend/about');
+        return view('frontend/home');
     }
 }

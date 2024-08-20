@@ -20,9 +20,9 @@ Route::get('/forgetpasswordd',[AuthController::class, 'forget_password'])->name(
 
 
 
-// use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeController;
 
-// Route::get('/',[HomeController::class,'index'])->name('home.index');
+Route::get('/',[HomeController::class,'index'])->name('home.index');
 
 // Route::get('/privacy',[HomeController::class,'privacy'])->name('home.privacy');
 

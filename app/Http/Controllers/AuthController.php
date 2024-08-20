@@ -130,6 +130,6 @@ class AuthController extends Controller
 
     public function forget_password(Request $request)
     {
-        return view('frontend/forgetpasswordd');
+        return view('frontend/forget_password');
     }
 }

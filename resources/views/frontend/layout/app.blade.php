@@ -8,17 +8,17 @@
     </title>
 </head>
 <body>
-    <!--Include the Header partial-->
+
+    <!-- Include the Header partial -->
     @include('frontend.layout.header')
 
-    <!--Include the Topbar partial-->
+    <!-- Include the Topbar partial -->
     @include('frontend.layout.topbar')
 
     @yield('content')
 
-    <!--Include the footer partial-->
+    <!-- Include the Footer partial -->
     @include('frontend.layout.footer')
-    
-    
+
 </body>
 </html>

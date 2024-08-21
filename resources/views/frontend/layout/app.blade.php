@@ -51,6 +51,9 @@
                 <div class="row">
                     <!-- Include the top_selling slider partial -->
                     @include('frontend.slider.top_selling.type1')
+
+                    <!-- Include the trending_products slider partial -->
+                    @include('frontend.slider.trending_products.type1')
                 </div>
             </div>
         </section>

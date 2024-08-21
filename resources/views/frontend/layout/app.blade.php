@@ -23,36 +23,45 @@
     <!-- Include the Header partial -->
     @include('frontend.layout.header')
 
-
-
     <!-- Include the Topbar partial -->
     @include('frontend.layout.topbar')
 
     <main class="main">
-    @if (Request::is('login'))    
+
+    @if (
+        Request::is('login') || 
+        Request::is('register') || 
+        Request::is('forget_password') || 
+        Request::is('reset_password') || 
+        Request::is('page_terms') || 
+        Request::is('about') || 
+        Request::is('account') || 
+        Request::is('privacy_policy') 
+    )    
+
         @yield('content')
 
-    @elseif (Request::is('/'))
+    @elseif(Request::is('/'))
 
-    <!-- Include the slider partial -->
-    @include('frontend.slider.type1')
+        <!-- Include the slider partial -->
+        @include('frontend.slider.type1')
 
-    <!-- Include the feature categories slider partial -->
-    @include('frontend.slider.feature_categories.type1')
+        <!-- Include the feature categories slider partial -->
+        @include('frontend.slider.feature_categories.type1')
 
-    <!-- Include the banner slider partial -->
-    @include('frontend.slider.banner.type1')
+        <!-- Include the banner slider partial -->
+        @include('frontend.slider.banner.type1')
 
-    <!-- Include the popular product slider partial -->
-    @include('frontend.slider.popular_product.type1')
+        <!-- Include the popular product slider partial -->
+        @include('frontend.slider.popular_product.type1')
 
-    <!-- Include the daily best sells slider partial -->
-    @include('frontend.slider.daily_best_sells.type1')
+        <!-- Include the daily best sells slider partial -->
+        @include('frontend.slider.daily_best_sells.type1')
 
-    <!-- Include the popular product slider partial -->
-    @include('frontend.slider.deal_of_the_day.type1')
+        <!-- Include the deal of the day slider partial -->
+        @include('frontend.slider.deal_of_the_day.type1')
 
-    <section class="section-padding mb-30">
+        <section class="section-padding mb-30">
             <div class="container">
                 <div class="row">
                     <!-- Include the top_selling slider partial -->
@@ -70,10 +79,14 @@
             </div>
         </section>
         <!--End 4 columns-->
-    @endif
-    </main>
 
-    @yield('content')
+    @else
+
+        @yield('content')
+
+    @endif
+
+    </main>
 
     <!-- Include the Footer partial -->
     @include('frontend.layout.footer')
@@ -101,7 +114,7 @@
     <script src="frontend/js/plugins/jquery.vticker-min.js"></script>
     <script src="frontend/js/plugins/jquery.theia.sticky.js"></script>
     <script src="frontend/js/plugins/jquery.elevatezoom.js"></script>
-    <!-- Template  JS -->
+    <!-- Template JS -->
     <script src="./frontend/js/main.js?v=5.3"></script>
     <script src="./frontend/js/shop.js?v=5.3"></script>
 

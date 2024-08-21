@@ -10,23 +10,26 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/login',[AuthController::class, 'login'])->name('home.login');
 Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
-Route::get('/profile',[AuthController::class, 'profile'])->name('home.profile');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::get('/profile',[AuthController::class, 'profile'])->name('home.profile');
+// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register',[AuthController::class, 'register'])->name('home.register');
-Route::post('/store', [AuthController::class, 'store'])->name('home.store');
+// Route::post('/store', [AuthController::class, 'store'])->name('home.store');
 Route::get('/forget_password',[AuthController::class, 'forget_password'])->name('home.forget_password');
-
-Route::get('/forgetpasswordd',[AuthController::class, 'forget_password'])->name('home.forget_password'); //partial
-
+Route::get('/reset_password',[AuthController::class, 'reset_password'])->name('home.reset_password');
 
 
 use App\Http\Controllers\HomeController;
 
-Route::get('/',[HomeController::class,'index'])->name('home.index');
+Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/page_terms',[HomeController::class, 'page_terms'])->name('home.page_terms');
+Route::get('/about', [HomeController::class, 'about'])->name('home.about');
+Route::get('/account', [HomeController::class, 'account'])->name('home.account');
+Route::get('/privacy_policy', [HomeController::class, 'privacy_policy'])->name('home.privacy_policy');
+Route::get('{any}', [HomeController::class, 'page_not_found'])->where('any', '.*');
 
-Route::get('/login',[HomeController::class,'login'])->name('home.login');
 
-// Route::get('/cookie',[HomeController::class,'cookie'])->name('home.cookie');
+
+
 
 
 use App\Http\Controllers\InvoiceController;

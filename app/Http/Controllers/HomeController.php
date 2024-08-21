@@ -33,7 +33,7 @@ class HomeController extends Controller
 
     public function page_not_found(Request $request)
     {
-        return view('frontend/page_not_found');
+        return view('frontend/error/page_not_found');
     }
 
     

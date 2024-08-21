@@ -24,7 +24,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/',[HomeController::class,'index'])->name('home.index');
 
-// Route::get('/privacy',[HomeController::class,'privacy'])->name('home.privacy');
+Route::get('/login',[HomeController::class,'login'])->name('home.login');
 
 // Route::get('/cookie',[HomeController::class,'cookie'])->name('home.cookie');
 

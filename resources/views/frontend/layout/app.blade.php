@@ -23,10 +23,16 @@
     <!-- Include the Header partial -->
     @include('frontend.layout.header')
 
+
+
     <!-- Include the Topbar partial -->
     @include('frontend.layout.topbar')
 
     <main class="main">
+    @if (Request::is('login'))    
+        @yield('content')
+
+    @elseif (Request::is('/'))
 
     <!-- Include the slider partial -->
     @include('frontend.slider.type1')
@@ -64,7 +70,7 @@
             </div>
         </section>
         <!--End 4 columns-->
-
+    @endif
     </main>
 
     @yield('content')

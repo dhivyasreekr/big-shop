@@ -36,5 +36,8 @@ class HomeController extends Controller
         return view('frontend/error/page_not_found');
     }
 
-    
+    public function purchase_guide(Request $request)
+    {
+        return view('frontend/auth/purchase_guide');
+    }
 }

@@ -25,12 +25,7 @@ Route::get('/page_terms',[HomeController::class, 'page_terms'])->name('home.page
 Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 Route::get('/account', [HomeController::class, 'account'])->name('home.account');
 Route::get('/privacy_policy', [HomeController::class, 'privacy_policy'])->name('home.privacy_policy');
-Route::get('{any}', [HomeController::class, 'page_not_found'])->where('any', '.*');
 Route::get('/purchase_guide', [HomeController::class, 'purchase_guide'])->name('home.purchase_guide');
-
-
-
-
 
 use App\Http\Controllers\InvoiceController;
 
@@ -38,3 +33,9 @@ Route::get('/invoice/generate-pdf/{id}', [InvoiceController::class, 'generateInv
 Route::get('/invoice/download-pdf/{id}', [InvoiceController::class, 'downloadInvoicePdf'])->name('invoice.download-pdf');
 Route::get('/invoice/stream-pdf/{id}', [InvoiceController::class, 'streamInvoicePdf'])->name('invoice.stream-pdf');
 Route::get('/invoice/send-email/{id}', [InvoiceController::class, 'sendInvoiceEmail'])->name('invoice.send-email');
+
+
+
+
+
+Route::get('{any}', [HomeController::class, 'page_not_found'])->where('any', '.*');

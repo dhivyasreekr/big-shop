@@ -449,7 +449,7 @@ class DatabaseSeeder extends Seeder
 
             CountrySeeder::class,
             StateSeeder::class,
-            // CitySeeder::class,
+            CitySeeder::class,
             // LabelSeeder::class,
             // TagSeeder::class,
             // CompanySeeder::class,

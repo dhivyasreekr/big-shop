@@ -29,9 +29,7 @@ class CityResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('code')
-                    ->required()
-                    ->maxLength(255),
+         
             ]);
     }
 
@@ -44,8 +42,7 @@ class CityResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('code')
-                    ->searchable(),
+         
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

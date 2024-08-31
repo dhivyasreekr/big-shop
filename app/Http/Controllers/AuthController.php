@@ -18,29 +18,29 @@ class AuthController extends Controller
         return view('frontend/auth/login');
     }
 
-    // public function authenticate(Request $request)
-    // {
-    //     $request->validate([
-    //         'email' => 'required',
-    //         'password' => 'required'
-    //     ]);
+    public function authenticate(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
 
-    //     $email = $request->input('email');
+        $email = $request->input('email');
         
-    //     $password = $request->input('password');
+        $password = $request->input('password');
 
-    //     if (User::where('email', $email)->exists()) 
-    //     {
-    //         $user = User::where('email', $email)->first();
+        if (User::where('email', $email)->exists()) 
+        {
+            $user = User::where('email', $email)->first();
             
-    //         Auth::login($user);        
+            Auth::login($user);        
 
-    //         return redirect('profile');
-    //     }
+            return redirect('/');
+        }
         
-    //     return redirect()->back()->withInput()->withErrors(['email' => 'Invalid email  or password']);
+        return redirect()->back()->withInput()->withErrors(['email' => 'Invalid email  or password']);
         
-    // }
+    }
     
     
     // public function profile(Request $request)
@@ -48,40 +48,54 @@ class AuthController extends Controller
     //     return view('frontend/profile');
     // }
 
-    // public function logout(Request $request)
-    // {
-    //     Auth::logout();
+    public function logout(Request $request)
+    {
+        Auth::logout();
 
-    //     $request->session()->invalidate();
+        $request->session()->invalidate();
 
-    //     $request->session()->regenerateToken();
+        $request->session()->regenerateToken();
 
-    //     return redirect('/');
-    // }
+        return redirect('/');
+    }
 
 
     public function register(Request $request)
     {
-        return view('frontend/auth/register');
+       
+        // dd($request);
+        // Retrieve all cities for use in the view
+        $cities = City::all();
+
+        // Retrieve all categories for use in the view
+        $categories = Category::all();
+
+
+        // Initialize data array
+        $data = [
+            'categories' => $categories,
+            'cities' => $cities,
+         ];
+        return view('frontend/auth/register',$data);
     }
 
 
-    // public function store(Request $request)
-    // {
-    //     try 
-    //     {
-    //         $request->validate([
-    //             'email' => 'required',
-    //             'password' => 'required',
-    //             'name' => 'required',
-    //             'password' => 'required',
-    //             'confirmPassword' => 'required',
-    //             'phone' => 'required',
-    //             'address' => 'required',
-    //             'pincode' => 'required',
-    //             'country' => 'required',
-    //             'captcha' => 'required'
-    //         ]);
+    public function store(Request $request)
+    {
+        try 
+        {
+            $request->validate([
+                'email' => 'required',
+                'password' => 'required',
+                'name' => 'required',
+                'password' => 'required',
+                'confirmPassword' => 'required',
+                'phone' => 'required',
+                'address' => 'required',
+                'pincode' => 'required',
+                'country' => 'required',
+                'captcha' => 'required'
+            ]);
     
             // Check if validation fails
             // if ($validator->fails()) {
@@ -90,38 +104,38 @@ class AuthController extends Controller
     
             // dd($request);
     
-            // $user = User::create([
-            //     'name' => $request->input('name'),
-            //     'gender' => $request->input('gender'),
-            //     'email' => $request->input('email'),
-            //     'password' => Hash::make($request->input('password')),
-            //     'phone' => $request->input('phone'),
-            //     'address' => $request->input('address'),
-            //     'pincode' => $request->input('pincode'),
-    //             'country' => $request->input('country'),
-    //         ]);
+            $user = User::create([
+                'name' => $request->input('name'),
+                'gender' => $request->input('gender'),
+                'email' => $request->input('email'),
+                'password' => Hash::make($request->input('password')),
+                'phone' => $request->input('phone'),
+                'address' => $request->input('address'),
+                'pincode' => $request->input('pincode'),
+                'country' => $request->input('country'),
+            ]);
 
-    //         $selectedRole = Role::where('name', 'Customer')->first();
+            $selectedRole = Role::where('name', 'Customer')->first();
 
     //         // dd($request->input('occupation'));
     //         // dd($selectedRole);
             
-    //         $user->assignRole($selectedRole->name);
+            $user->assignRole($selectedRole->name);
 
     //         // Register successful, set success message            
-    //         $request->session()->flash('success_message', 'User registered successfully');
+            $request->session()->flash('success_message', 'User registered successfully');
     
     //         // Redirect or return response
-    //         return redirect()->route('home.register')->with('success', 'Registration successful!');    
-    //     } 
-    //     catch (ValidationException $e) {
+            return redirect()->route('home.register')->with('success', 'Registration successful!');    
+        } 
+        catch (ValidationException $e) {
     //         // return response()->json(['error' => $e->validator->errors()], 200);
 
     //         // Validation failed, return validation errors
-    //         return redirect()->back()->withErrors($e->validator->errors())->withInput();
+            return redirect()->back()->withErrors($e->validator->errors())->withInput();
     //         // dump($e->validator->errors());
-    //     }
-    // }
+        }
+    }
 
 
 

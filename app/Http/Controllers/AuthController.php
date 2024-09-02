@@ -24,9 +24,11 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $categories= Category::all();
+        $cities= City::all();
 
         $data=[
-            'categories'=>$categories
+            'categories'=>$categories,
+            'cities'=>$cities
         ];
 
         return view('frontend/auth/login', $data);

@@ -133,11 +133,17 @@ class AuthController extends Controller
     //         // Register successful, set success message            
             $request->session()->flash('success_message', 'User registered successfully');
     
-            // Call the sendRegisterMail function to send the email
-            $this->sendRegisterMail($request);
+            // Call the sendRegisterMail function to send the email using class name(Authcontroller)
+            AuthController::sendRegisterMail($request);
 
-    //       // Redirect or return response
-            return redirect()->route('home.register')->with('success', 'Registration successful!');    
+            // Register successful, set success message            
+            $request->session()->flash('success_message', 'User registered successfully');
+
+
+           
+
+          // Redirect or return response
+            return redirect()->route('home.login')->with('success', 'Registration successful!');    
         } 
         catch (ValidationException $e) {
     //         // return response()->json(['error' => $e->validator->errors()], 200);
@@ -160,7 +166,7 @@ class AuthController extends Controller
         return view('frontend/auth/reset_password');
     }
 
-    public function sendRegisterMail(Request $request)
+    public static function sendRegisterMail(Request $request)
     {
         $request->validate([
             'email' => 'required|email',

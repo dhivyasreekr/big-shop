@@ -13,10 +13,10 @@ Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('aut
 // Route::get('/profile',[AuthController::class, 'profile'])->name('home.profile');
 Route::get('/logout', [AuthController::class, 'logout'])->name('home.logout');
 Route::get('/register',[AuthController::class, 'register'])->name('home.register');
-// Route::post('/store', [AuthController::class, 'store'])->name('home.store');
+Route::post('/store', [AuthController::class, 'store'])->name('home.store');
 Route::get('/forget_password',[AuthController::class, 'forget_password'])->name('home.forget_password');
 Route::get('/reset_password',[AuthController::class, 'reset_password'])->name('home.reset_password');
-
+Route::get('{any}', [AuthController::class, 'error'])->where('any', '.*');
 
 use App\Http\Controllers\HomeController;
 

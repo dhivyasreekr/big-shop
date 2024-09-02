@@ -29,23 +29,56 @@ Register page
                                             <h1 class="mb-5">Create an Account</h1>
                                             <p class="mb-30">Already have an account? <a href="page-login.html">Login</a></p>
                                         </div>
-                                        <form method="post">
-                                            <div class="form-group">
-                                                <input type="text" required="" name="username" placeholder="Username" />
+                                        @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
+
+                                     <!-- registered successfully -->
+                                    <!-- Check if a success message exists in the session and display it -->
+                                    @if (Session::has('success_message'))
+                                        <div class="alert alert-success">
+                                            {{ Session::get('success_message') }}
+                                        </div>
+                                    @endif  
+                                    <form  action="/store" method="post">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input type="text" required="" name="name" placeholder="name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" required="" name="email" placeholder="Email" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input required="" type="password" name="password" placeholder="Password" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input required="" type="password" name="confirmPassword" placeholder="Confirm password" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input required="" type="text" name="phone" placeholder="phone" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input required="" type="text" name="country" placeholder="country" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input required="" type="text" name="address" placeholder="address" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input required="" type="text" name="pincode" placeholder="pincode" />
+                                        </div>
+
+                                        <div class="login_footer form-group">
+                                            <div class="chek-form">
+                                                <input type="text" name="captcha" placeholder="Security code *" />
+
                                             </div>
-                                            <div class="form-group">
-                                                <input type="text" required="" name="email" placeholder="Email" />
-                                            </div>
-                                            <div class="form-group">
-                                                <input required="" type="password" name="password" placeholder="Password" />
-                                            </div>
-                                            <div class="form-group">
-                                                <input required="" type="password" name="password" placeholder="Confirm password" />
-                                            </div>
-                                            <div class="login_footer form-group">
-                                                <div class="chek-form">
-                                                    <input type="text" required="" name="email" placeholder="Security code *" />
-                                                </div>
+                                            
                                                 <span class="security-code">
                                                     <b class="text-new">8</b>
                                                     <b class="text-hot">6</b>

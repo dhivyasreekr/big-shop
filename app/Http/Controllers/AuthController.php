@@ -23,7 +23,13 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        return view('frontend/auth/login');
+        $categories= Category::all();
+
+        $data=[
+            'categories'=>$categories
+        ];
+
+        return view('frontend/auth/login', $data);
     }
 
     public function authenticate(Request $request)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\City;
 use App\Models\Product;
 use App\Models\Category;
 
@@ -13,7 +14,16 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        return view('frontend/home');
+        $categories= Category::all();
+
+        $cities = City::all();
+
+        $data=[
+            'categories'=>$categories,
+            'cities' =>$cities
+        ];
+
+        return view('frontend/home',$data);
     }
 
     public function page_terms(Request $request)

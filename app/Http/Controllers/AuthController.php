@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\Message;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+
 
 use App\Models\User;
 
@@ -129,7 +133,10 @@ class AuthController extends Controller
     //         // Register successful, set success message            
             $request->session()->flash('success_message', 'User registered successfully');
     
-    //         // Redirect or return response
+            // Call the sendRegisterMail function to send the email
+            $this->sendRegisterMail($request);
+
+    //       // Redirect or return response
             return redirect()->route('home.register')->with('success', 'Registration successful!');    
         } 
         catch (ValidationException $e) {
@@ -153,6 +160,34 @@ class AuthController extends Controller
         return view('frontend/auth/reset_password');
     }
 
+    public function sendRegisterMail(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'name' => 'required|string|max:255',
+        ]);
+
+        // Get the validated data
+        $email = $request->input('email');
+        $name = $request->input('name');
+
+        // Define the data for the email
+        $data = [
+            'name' => $name,
+            'email' => $email
+        ];
+
+        // Send the registration email using a Mailable class
+        Mail::send('frontend.auth.email.register', $data, function($message) use ($email, $name) {
+            $message->to($email, $name)
+                    ->subject('Welcome to Our Platform');
+        });
+
+        // Return a response
+        return response()->json([
+            'message' => 'Registration email sent successfully!'
+        ], 200);
+    }
     
 
 }

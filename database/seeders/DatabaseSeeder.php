@@ -55,42 +55,6 @@ class DatabaseSeeder extends Seeder
             Collection::create($row);
         }
 
-        
-        $products = [
-            [
-                'name' => 'Apple',
-                'description' => 'abcd',
-                'price' => 100,
-                'category_id' => 1,
-                'brand_id' => 6,
-                // 'product_label' => 'Sale',
-                // 'product_tag' => 
-                // 'product_collection' => 'Special Offers',
-                'qty' => 150,
-                'alert_stock' => 10,
-                // 'Stock_status' => 'InStock'
-            ],
-            [
-                'name' => 'Eggs',
-                'description' => 'xyz',
-                'price' => 6,
-                'category_id' => 2,
-                'brand_id' => 6,
-                // 'product_label' => 'Sale',
-                // 'product_tag' => 
-                // 'product_collection' => 'Special Offers',
-                'qty' => 500,
-                'alert_stock' => 100,
-                // 'Stock_status' => 'InStock'
-            ],
-            
-        ];
-
-        foreach ($products as $row)
-        {
-            Product::create($row);
-        }
-
         $roles = [
             [
                 'name' => 'Admin'
@@ -120,6 +84,9 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class,
             CategorySeeder::class,
             SubCategorySeeder::class,
+            ProductSeeder::class,
+
+
 
         ]);
     }

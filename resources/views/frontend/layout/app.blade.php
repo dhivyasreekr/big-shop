@@ -33,10 +33,13 @@
         Request::is('register') || 
         Request::is('forget_password') || 
         Request::is('reset_password') || 
-        Request::is('page_terms') || 
-        Request::is('about') || 
         Request::is('account') || 
-        Request::is('privacy_policy') 
+        Request::is('privacy_policy') || 
+        Request::is('page_terms') || 
+        Request::is('error') ||
+        Request::is('purchase_guide') ||
+        Request::is('about') 
+        
     )    
 
         @yield('content')

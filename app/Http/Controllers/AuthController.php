@@ -166,6 +166,7 @@ class AuthController extends Controller
         return view('frontend/auth/reset_password');
     }
 
+    // static is used to call function without using object 
     public static function sendRegisterMail(Request $request)
     {
         $request->validate([

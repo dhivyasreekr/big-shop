@@ -47,4 +47,11 @@ class Category extends Model
     {
         return $this->subcategories()->count();
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'product_categories');
+    }
+
+
 }

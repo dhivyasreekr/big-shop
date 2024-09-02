@@ -14,4 +14,9 @@ class Label extends Model
         'status',
         'color'
     ];
+
+    public function product()
+    {
+        return $this->belongsToMany(Product::class, 'product_labels');
+    }
 }

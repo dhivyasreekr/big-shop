@@ -14,7 +14,7 @@ class LabelSeeder extends Seeder
      */
     public function run(): void
     {
-        $labels = [
+        $product_labels = [
             [
                 'name' => 'Hot',
                 'color' => '#e74c3c'
@@ -30,7 +30,7 @@ class LabelSeeder extends Seeder
             
         ];
 
-        foreach ($labels as $row){
+        foreach ($product_labels as $row){
             Label::create($row);
         }
     }

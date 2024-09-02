@@ -25,9 +25,20 @@ class Product extends Model
         'product_label_id',
         'image_path',
         'qty',
-        'alert_stock'
+        'alert_stock',
+        'product_tag_id',
+        'stock_status',
+        'is_featured',
+        'min_order_qty',
+        'max_order_qty'
         
     ];
+
+    protected $casts = [
+        'image_path' => 'array',
+    ];
+
+
 
     public function category()
     {
@@ -54,9 +65,24 @@ class Product extends Model
         return $this->belongsToMany(Collection::class, 'product_collections');
     }
 
+    public function productCompany()
+    {
+        return $this->belongsToMany(Company::class,'product_companies');
+    }
+
+
+
     public function getImagePath()
     {
         return env('DOMAIN_URL') . Storage::url($this->image_path);
+    }
+
+    public function DeleteLogoImage()
+    {        
+        if (Storage::exists($this->image_path)) 
+        {
+            Storage::delete($this->image_path);
+        }
     }
 
 }

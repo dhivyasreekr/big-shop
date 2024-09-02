@@ -35,15 +35,24 @@ class ProductResource extends Resource
                     ->default(null)
                     ->prefix('$'),
                 Forms\Components\CheckboxList::make('category_id')
+                    // ->multiple()
+                    // ->preload()
                     ->relationship('category', 'name')
-                    ->default(null),
+                    ->required(),
+                Forms\Components\Select::make('product_company_id')
+                    ->relationship('productCompany', 'name')
+                    ->required(),
                 Forms\Components\Select::make('brand_id')
                     ->preload()
                     ->relationship('brand', 'name'),
                 Forms\Components\CheckboxList::make('product_label_id')
+                    // ->multiple()
+                    // ->preload()
                     ->relationship('productLabel', 'name')
                     ->default(null),
                 Forms\Components\Select::make('product_tag_id')
+                    ->multiple()
+                    ->preload()
                     ->relationship('productTag', 'name')
                     ->default(null),
                 Forms\Components\CheckboxList::make('product_collection_id')

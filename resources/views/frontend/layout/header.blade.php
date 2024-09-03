@@ -1,5 +1,5 @@
 <header class="header-area header-style-1 header-height-2">
-    <div class="mobile-promotion">
+<div class="mobile-promotion">
         <span>Grand opening, <strong>up to 15%</strong> off all items. Only <strong>3 days</strong> left</span>
     </div>
     <div class="header-top header-top-ptb-1 d-none d-lg-block">
@@ -8,9 +8,9 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info">
                         <ul>
-                            <li><a href="page-about.htlm">About Us</a></li>
-                            <li><a href="page-account.html">My Account</a></li>
-                            <li><a href="shop-wishlist.html">Wishlist</a></li>
+                            <li><a href="{{ route('home.about') }}">About Us</a></li>
+                            <li><a href="{{ route('home.my_account') }}">My Account</a></li>
+                            <li><a href="{{ route('home.my_account') }}">Wishlist</a></li>
                             <li><a href="shop-order.html">Order Tracking</a></li>
                         </ul>
                     </div>
@@ -18,13 +18,14 @@
                 <div class="col-xl-6 col-lg-4">
                     <div class="text-center">
                         <div id="news-flash" class="d-inline-block">
-                            <ul>
-                                <li>100% Secure delivery without contacting the courier</li>
+                        <ul>
+                        <li>100% Secure delivery without contacting the courier</li>
                                 <li>Supper Value Deals - Save more with coupons</li>
                                 <li>Trendy 25silver jewelry, save up 35% off today</li>
-                            </ul>
-                        </div>
+                        </ul>
                     </div>
+                </div>
+                
                 </div>
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info header-info-right">

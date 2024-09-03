@@ -29,7 +29,30 @@ Route::get('/purchase_guide', [HomeController::class, 'purchase_guide'])->name('
 // Product detail page
 Route::get('/products/{id}', [HomeController::class, 'show'])->name('product.show');
 
-Route::get('{any}', [AuthController::class, 'error'])->where('any', '.*');
+
+use App\Http\Controllers\CartController;
+
+// Cart listing page
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+// Add to Cart
+Route::post('/cart/add_to_cart', [CartController::class, 'add_to_cart'])->name('cart.add_to_cart');
+
+// Increase quantity route
+Route::post('/cart/increase/{id}', [CartController::class, 'increaseQuantity'])->name('cart.increase');
+
+// Decrease quantity route
+Route::post('/cart/decrease/{id}', [CartController::class, 'decreaseQuantity'])->name('cart.decrease');
+
+// Remove item from cart
+Route::delete('/cart/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+
+// Checkout route (if you have a checkout process)
+// Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+// Clear cart route
+Route::post('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+
 
 use App\Http\Controllers\InvoiceController;
 
@@ -42,4 +65,7 @@ Route::get('/invoice/send-email/{id}', [InvoiceController::class, 'sendInvoiceEm
 
 
 
-Route::get('{any}', [HomeController::class, 'page_not_found'])->where('any', '.*');
+
+// Route::get('{any}', [HomeController::class, 'page_not_found'])->where('any', '.*');
+
+Route::get('{any}', [AuthController::class, 'error'])->where('any', '.*');

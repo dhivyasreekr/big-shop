@@ -40,7 +40,8 @@
         Request::is('error') ||
         Request::is('purchase_guide') ||
         Request::is('about') ||
-        Request::routeIs('product.show')
+        Request::routeIs('product.show') ||
+        Request::routeIs('cart.index')
         
     )    
 

@@ -10,7 +10,7 @@
                         <ul>
                             <li><a href="{{ route('home.about') }}">About Us</a></li>
                             <li><a href="{{ route('home.my_account') }}">My Account</a></li>
-                            <li><a href="{{ route('home.my_account') }}">Wishlist</a></li>
+                            <li><a href="{{ route('home.wishlist') }}">Wishlist</a></li>
                             <li><a href="shop-order.html">Order Tracking</a></li>
                         </ul>
                     </div>

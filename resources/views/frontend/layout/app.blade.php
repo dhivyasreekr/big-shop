@@ -35,14 +35,18 @@
         Request::is('forget_password') || 
         Request::is('reset_password') || 
         Request::is('account') || 
+        Request::is('wishlist') ||
         Request::is('privacy_policy') || 
         Request::is('page_terms') || 
         Request::is('error') ||
         Request::is('purchase_guide') ||
         Request::is('about') ||
         Request::routeIs('product.show') ||
-        Request::routeIs('cart.index')
-        
+        Request::routeIs('cart.index') ||
+        Request::is('checkout') ||
+        Request::routeIs('order.place_an_order') ||
+        Request::routeIs('order.confirmation') ||
+        Request::routeIs('invoice.show') 
     )    
 
         @yield('content')

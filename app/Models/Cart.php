@@ -34,7 +34,7 @@ class Cart extends Model
 
     public static function grandTotal($customId)
     {
-        $cartItems = Cart::where('customer_id', $customId)->get();
+        $cartItems = Cart::where('customer_id', $customerId)->get();
         $total = $cartItems->sum(function ($item) {
             return $item->totalPrice();
         });

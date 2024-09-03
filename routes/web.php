@@ -57,6 +57,21 @@ Route::delete('/cart/{id}', [CartController::class, 'removeFromCart'])->name('ca
 // Clear cart route
 Route::post('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
 
+use App\Http\Controllers\OrderController;
+
+Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+
+// Checkout Route
+Route::post('checkout', [OrderController::class, 'checkout'])->name('checkout');
+
+// Order Confirmation Route
+Route::get('order/confirmation/{order}', [OrderController::class, 'confirmation'])->name('order.confirmation');
+
+// Order history Route
+Route::get('order/history/{id}', [OrderController::class, 'order_history'])->name('order.history');
+
+// Order show Route
+Route::get('/order/{id}', [OrderController::class, 'show'])->name('order.show');
 
 use App\Http\Controllers\InvoiceController;
 

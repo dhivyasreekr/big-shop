@@ -27,7 +27,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/',[HomeController::class,'index'])->name('home.index');
 Route::get('/page_terms',[HomeController::class, 'page_terms'])->name('home.page_terms');
 Route::get('/about', [HomeController::class, 'about'])->name('home.about');
-Route::get('/account', [HomeController::class, 'account'])->name('home.account');
+Route::get('/my_account', [HomeController::class, 'my_account'])->name('home.my_account');
 Route::get('/privacy_policy', [HomeController::class, 'privacy_policy'])->name('home.privacy_policy');
 Route::get('/purchase_guide', [HomeController::class, 'purchase_guide'])->name('home.purchase_guide');
 // Product detail page

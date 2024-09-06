@@ -97,6 +97,10 @@ class HomeController extends Controller
         return view('frontend/auth/about');
     }
 
+    public function my_account(Request $request)
+    {
+        return view('frontend/auth/my_account');
+    }
 
 
 }

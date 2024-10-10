@@ -16,6 +16,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/imgs/theme/favicon.svg') }}" />
     <!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('frontend/css/plugins/slider-range.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/plugins/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css?v=5.3') }}" />
 </head>
@@ -119,6 +120,7 @@
     <script src="{{ asset('frontend/js/plugins/jquery.syotimer.min.js') }}"></script>
     <script src="{{ asset('frontend/js/plugins/waypoints.js') }}"></script>
     <script src="{{ asset('frontend/js/plugins/wow.js') }}"></script>
+    <script src="{{ asset('frontend/js/plugins/slider-range.js') }}"></script>
     <script src="{{ asset('frontend/js/plugins/perfect-scrollbar.js') }}"></script>
     <script src="{{ asset('frontend/js/plugins/magnific-popup.js') }}"></script>
     <script src="{{ asset('frontend/js/plugins/select2.min.js') }}"></script>
@@ -134,5 +136,27 @@
     <script src="{{ asset('frontend/js/main.js?v=5.3') }}"></script>
     <script src="{{ asset('frontend/js/shop.js?v=5.3') }}"></script>
 
+    <script>
+        $(document).ready(function() {
+            console.log("doc ready");
+            
+            // Category Search Event
+            // Set the selected option value (example: setting it to '2')
+            // $('#category').val('5'); // This sets the dropdown to 'Category 2'
+
+            $('#category').change(function() {
+                var selectedValue = $(this).val();
+                console.log("Selected Category ID: " + selectedValue);
+
+                // Optionally submit the form if needed
+                // Submit the form when the dropdown value changes
+                $(this).closest('form').submit();
+                
+            });
+
+            // Location Searh Event
+            // $('#c')
+        });
+    </script>
 </body>
 </html>

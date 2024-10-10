@@ -85,6 +85,6 @@ Route::get('/invoice/send-email/{id}', [InvoiceController::class, 'sendInvoiceEm
 
 
 
-// Route::get('{any}', [HomeController::class, 'page_not_found'])->where('any', '.*');
+Route::get('{any}', [HomeController::class, 'page_not_found'])->where('any', '.*');
 
-Route::get('{any}', [AuthController::class, 'error'])->where('any', '.*');
+// Route::get('{any}', [AuthController::class, 'error'])->where('any', '.*');

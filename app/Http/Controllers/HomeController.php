@@ -102,5 +102,8 @@ class HomeController extends Controller
         return view('frontend/auth/my_account');
     }
 
-
+    public function page_not_found(Request $request)
+    {
+        return view('frontend/error/page_not_found');
+    }
 }

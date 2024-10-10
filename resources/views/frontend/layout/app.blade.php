@@ -155,7 +155,18 @@
             });
 
             // Location Searh Event
-            // $('#c')
+            // $('#location').val('5');
+            
+            $('#location').change(function() {
+                
+                var selectedValue = $(this).val();
+                console.log("Selected location ID: " + selectedValue);
+
+                // Optionally submit the form if needed
+                // Submit the form when the dropdown value changes
+                $(this).closest('form').submit();
+                
+            });
         });
     </script>
 </body>

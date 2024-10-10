@@ -87,11 +87,11 @@
                     <div class="header-action-right">
                         <div class="header-action-2">
                             <div class="search-location">
-                                <form action="#">
-                                    <select class="select-active">
-                                        <option>Your Location</option>
+                                <form method="GET" action="{{ route('home.index') }}">
+                                    <select class="select-active" name="location" id="location">
+                                        <option value="All" {{ request()->input('location') == 'All' ? 'selected' : '' }}>Your Location</option>
                                         @foreach($cities as $row)
-                                            <option value="{{ $row->id }}" {{ request()->input('row') == $row->name ? 'selected' : '' }}>
+                                            <option value="{{ $row->id }}" {{ request()->input('location') == $row->id ? 'selected' : '' }}>
                                                 {{ $row->name }}
                                             </option>
                                         @endforeach

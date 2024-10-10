@@ -136,6 +136,10 @@
     <script src="{{ asset('frontend/js/main.js?v=5.3') }}"></script>
     <script src="{{ asset('frontend/js/shop.js?v=5.3') }}"></script>
 
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
     <script>
         $(document).ready(function() {
             console.log("doc ready");
@@ -167,6 +171,25 @@
                 $(this).closest('form').submit();
                 
             });
+
+            // Price Range Slider
+            // Initialize the slider
+            // var to = 600;
+            $("#slider-range").slider({
+                range: true,
+                min: 0, // Set the minimum value
+                max: 1000, // Set the maximum value
+                values: [0, 1000], // Initial values
+                slide: function(event, ui) {
+                    // Update the displayed values on slide
+                    $("#slider-range-value1").text(ui.values[0]);
+                    $("#slider-range-value2").text(ui.values[1]);
+                }
+            });
+
+            // Display the initial values
+            $("#slider-range-value1").text($("#slider-range").slider("values", 0));
+            $("#slider-range-value2").text($("#slider-range").slider("values", 1));
         });
     </script>
 </body>

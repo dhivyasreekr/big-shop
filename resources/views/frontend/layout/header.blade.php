@@ -73,10 +73,10 @@
                 <div class="header-right">
                     <div class="search-style-2">
                         <form method="GET" action="{{ route('home.index') }}">
-                            <select class="select-active" name="category">
+                            <select class="select-active" name="category" id="category">
                                 <option value="All" {{ request()->input('category') == 'All' ? 'selected' : '' }}>All Categories</option> 
                                 @foreach($categories as $row)
-                                    <option value="{{ $row->id }}" {{ request()->input('row') == $row->name ? 'selected' : '' }}>
+                                    <option value="{{ $row->id }}" {{ request()->input('category') == $row->id ? 'selected' : '' }}>
                                         {{ $row->name }}
                                     </option>
                                 @endforeach
